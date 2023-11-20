@@ -1,38 +1,43 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytapano <ytapano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/19 19:58:09 by ytapano           #+#    #+#             */
+/*   Updated: 2023/11/19 20:03:04 by ytapano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// #include "ft_strlen.c"
-// #include <stdio.h>
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*arr;
-	size_t	i;
-	size_t	k;
-	size_t	sum;
-	size_t	j;
-	size_t	p;
+	char	*new;
+	int		i;
+	int		j;
 
-	i = ft_strlen(s1);
-	k = ft_strlen(s2);
-	sum = i + k;
-	j = 0;
-	arr = (char *)malloc(sizeof(char) * (sum + 1));
-	if (!arr)
-		return (NULL);
 	i = 0;
-	while (s1[j])
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	new = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!new)
+		return (NULL);
+	while (s1[i])
 	{
-		arr[j] = s1[j];
+		new[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		new[i] = s2[j];
+		i++;
 		j++;
 	}
-	p = 0;
-	while (s2[p])
-	{
-		arr[p + j] = s2[p];
-		p++;
-	}
-	arr[p + j] = '\0';
-	return (arr);
+	new[i] = '\0';
+	return (new);
 }
 
 // int main(int ac, char *av[])

@@ -1,33 +1,73 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytapano <ytapano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/19 19:57:28 by ytapano           #+#    #+#             */
+/*   Updated: 2023/11/20 06:10:14 by ytapano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <string.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	long	i;
+	size_t			i;
+	unsigned char	*destbytes;
+	unsigned char	*srcbytes;
 
-	if (dst < src)
-	{
-		i = 0;
-		while ((size_t)i < len)
-		{
-			*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
-			i++;
-		}
-		return (dst);
-	}
-	else
+	destbytes = (unsigned char *)dst;
+	srcbytes = (unsigned char *)src;
+	if (destbytes > srcbytes && len > 0)
 	{
 		i = len - 1;
 		while (i >= 0)
 		{
-			*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
+			destbytes[i] = srcbytes[i];
+			if (i == 0)
+			{
+				break ;
+			}
 			i--;
 		}
-		return (dst);
 	}
+	else
+	{
+		ft_memcpy(destbytes, srcbytes, len);
+	}
+	return (destbytes);
 }
+
+// void	*ft_memmove(void *dest, const void *src, size_t n)
+// {
+// 	size_t			i;
+// 	char			j;
+// 	unsigned char	*d;
+// 	unsigned char	*s;
+
+// 	i = 0;
+// 	j = 1;
+// 	d = (unsigned char *)dest;
+// 	s = (unsigned char *)src;
+// 	if (!dest && !src)
+// 		return (NULL);
+// 	if (dest > src)
+// 	{
+// 		j = -1;
+// 		d += n - 1;
+// 		s += n - 1;
+// 	}
+// 	while (i < n)
+// 	{
+// 		*d = *s;
+// 		d += j;
+// 		s += j;
+// 		i++;
+// 	}
+// 	return (dest);
+// }
 
 // int main(int argc, char *argv[])
 // {
@@ -44,7 +84,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 //     printf("Source: %s\n", source);
 //     printf("Destination: %s\n", destination);
 
-//     memmove(destination, source, length);
+//     ft_memmove(destination, source, length);
 
 //     printf("After memmove:\n");
 //     printf("Source: %s\n", source);

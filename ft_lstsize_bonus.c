@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytapano <ytapano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/19 19:57:13 by ytapano           #+#    #+#             */
+/*   Updated: 2023/11/20 05:18:51 by ytapano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 // #include "ft_lstnew_bonus.c"
@@ -6,13 +18,15 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	count;
+	int		count;
+	t_list	*node;
 
+	node = lst;
 	count = 0;
-	while (lst != NULL)
+	while (node != NULL)
 	{
 		count++;
-		lst = lst->next;
+		node = node->next;
 	}
 	return (count);
 }

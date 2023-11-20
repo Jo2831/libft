@@ -1,43 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytapano <ytapano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/19 19:58:15 by ytapano           #+#    #+#             */
+/*   Updated: 2023/11/19 21:21:43 by ytapano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 // #include "ft_strlen.c"
 
-size_t	ft_strlcat(char *d, const char *s, size_t dstsize)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	dst_len;
-	size_t	index;
-	size_t	i;
+	size_t	s;
+	size_t	d;
+	size_t	di;
+	size_t	si;
 
-	if (!((unsigned char)d && (unsigned char)s))
-		return (0);
-	dst_len = ft_strlen(d);
-	index = 0;
-	while (d[index])
-		index++;
-	i = 0;
-	while (s[i] && (i + index + 1) < (dstsize))
+	si = ft_strlen(src);
+	if (!dst && size == 0)
+		return (si);
+	d = ft_strlen(dst);
+	di = d;
+	if (size <= di)
+		return (size + si);
+	s = 0;
+	while (src[s] && d + 1 < size)
 	{
-		d[index + i] = s[i];
-		i++;
+		dst[d] = src[s];
+		s++;
+		d++;
 	}
-	if (i < dstsize)
-		d[index + i] = '\0';
-	if (dstsize <= dst_len)
-		return (ft_strlen(s) + dstsize);
-	else
-		return (ft_strlen(s) + dst_len);
+	dst[d] = 0;
+	return (di + si);
 }
-
-// int main(void) {
-// char destination[12];
-// const char *source = "Hello, world!";
-// size_t size = sizeof(destination);
-
-// size_t copied_len = ft_strlcat(destination, source, size);
-
-// printf("Copied string: %s\n", destination);
-// printf("Copied length: %zu\n", copied_len);
-// 	printf("%zu\n",ft_strlcat((void *)0,(void *)0,5));
-
-//     return (0);
-// }

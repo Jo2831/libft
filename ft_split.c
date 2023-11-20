@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytapano <ytapano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/19 19:57:54 by ytapano           #+#    #+#             */
+/*   Updated: 2023/11/19 20:00:31 by ytapano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	count_words(char const *s, char c)
@@ -59,8 +71,8 @@ static void	set_mem(char **tab, char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t words;
-	char **tab;
+	size_t	words;
+	char	**tab;
 
 	words = count_words(s, c);
 	tab = malloc(sizeof(char *) * (words + 1));

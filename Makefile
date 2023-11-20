@@ -6,7 +6,7 @@
 #    By: ytapano <ytapano@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/18 22:08:04 by ytapano           #+#    #+#              #
-#    Updated: 2023/11/19 04:06:43 by ytapano          ###   ########.fr        #
+#    Updated: 2023/11/19 20:13:47 by ytapano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ OBJSB = ${BFILES:.c=.o}
 LIBC = ar rcs
 CC = cc
 RM = rm -f
+
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o:

@@ -1,41 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ytapano <ytapano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 19:57:24 by ytapano           #+#    #+#             */
-/*   Updated: 2023/11/19 19:57:25 by ytapano          ###   ########.fr       */
+/*   Created: 2023/11/19 19:58:34 by ytapano           #+#    #+#             */
+/*   Updated: 2023/11/20 05:35:43 by ytapano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 // #include <stdio.h>
+// #include "ft_strlen.c"
 // #include <string.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!dst && !src)
-		return (NULL);
-	if (dst != src)
+	while (s[i])
+		i++;
+	while (i >= 0)
 	{
-		while (i < n)
-		{
-			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i--;
 	}
-	return (dst);
+	return (0);
 }
 
-// int main(int ac, char *av[])
+// int main()
 // {
-//     size_t i = strlen(av[2]);
-//     printf("%s\n",ft_memcpy(av[1], av[2], i));
-//     printf("%s",memcpy(av[1], av[2], i));
+//     char str[] = "Hello, World!";
+//     char *result;
+//     char *res;
+
+//     result = ft_strrchr(str, 'W');
+//     res = strrchr(str, 'W');
+
+//     printf("Found: %s\n", result);
+//     printf("Found: %s\n", res);
+
+//     return (0);
 // }

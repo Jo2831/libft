@@ -1,21 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ytapano <ytapano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/19 19:57:07 by ytapano           #+#    #+#             */
+/*   Updated: 2023/11/20 05:16:34 by ytapano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *start;
-	t_list *current;
+	t_list	*new;
+	t_list	*node;
 
-	if (!lst || !f || !del)
+	if (!f || !lst)
 		return (NULL);
-	start = ft_lstnew(f(lst->content));
-	current = start;
-	while (lst && lst->next)
+	new = NULL;
+	while (lst)
 	{
-		if (!current)
+		node = ft_lstnew(f(lst->content));
+		if (!node)
+		{
+			ft_lstclear(&node, (*del));
 			return (NULL);
-		current->next = ft_lstnew(f(lst->next->content));
-		current = current->next;
+		}
+		ft_lstadd_back(&new, node);
 		lst = lst->next;
 	}
-	return (start);
+	return (new);
 }
